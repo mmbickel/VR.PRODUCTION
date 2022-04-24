@@ -1,4 +1,4 @@
-var layer = _.stage.withTexture("/Users/meganbickel/Desktop/Images\ 2021_STUDIO/VRdrawing.samplecopy.jpg")
+var layer = _.stage.withTexture("VRdrawing.samplecopy.jpg")
 layer.vrDefaults()
 
 layer.lines.clear()
