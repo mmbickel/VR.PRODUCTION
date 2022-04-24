@@ -1,0 +1,41 @@
+var layer = _.stage.withTexture("/Users/meganbickel/Desktop/Images\ 2021_STUDIO/VRdrawing.samplecopy.jpg")
+layer.vrDefaults()
+
+layer.lines.clear()
+var f = new FLine()
+
+while(true)
+{
+	//var handAt = layer.vrRightHandPosition()
+	//var trigger = layer.vrRightHandButtons().axis1_right_x
+
+	var handAt = layer.vrLeftHandPosition()
+	var trigger = layer.vrLeftHandButtons().axis1_left_x
+
+	if (trigger>0)
+	{
+		f.moveTo(handAt.noise(0.01))
+		f.node().texCoord = vec(0,0)
+		
+		f.lineTo(handAt)
+		f.node().texCoord = vec(Math.random(),Math.random())
+		
+		f.lineTo(handAt.noise(0.04))
+		f.node().texCoord = vec(Math.random(),Math.random())
+		
+		f.lineTo(handAt.noise(0.01))
+		f.node().texCoord = vec(0,0)
+
+		f.filled = true
+		
+		f.color = vec(1,1.4,1.4,0.9)
+		
+		layer.lines.ourLine = f
+	}
+	else {
+		f = new FLine()
+		
+	}
+
+	_.stage.frame()
+}
